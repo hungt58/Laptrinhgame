@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1741837869 source:c:\laptrinhgamedaihoc\khungcode\main.cpp
+	"hello.h"
+	<SDL.h>
+	<SDL_image.h>
+
+1741837300 c:\laptrinhgamedaihoc\khungcode\hello.h
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+
+1741837260 source:c:\laptrinhgamedaihoc\khungcode\hello.cpp
+	"hello.h"
+
