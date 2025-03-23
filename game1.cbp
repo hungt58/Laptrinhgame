@@ -33,11 +33,16 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="Spongebob.png" />
+		<Unit filename="bg2.png" />
 		<Unit filename="bikiniBottom.jpg" />
 		<Unit filename="hello.cpp" />
 		<Unit filename="hello.h" />
 		<Unit filename="hinh-nen-naruto-1.jpg" />
+		<Unit filename="human64x91.png" />
 		<Unit filename="main.cpp" />
+		<Unit filename="math.h" />
+		<Unit filename="movea.cpp" />
+		<Unit filename="movea.h" />
 		<Unit filename="sdl_image.cbp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
