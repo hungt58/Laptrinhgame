@@ -33,14 +33,19 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="Spongebob.png" />
+		<Unit filename="background2.png" />
+		<Unit filename="backgroundmenu.png" />
 		<Unit filename="bg2.png" />
 		<Unit filename="bikiniBottom.jpg" />
+		<Unit filename="freefire.mp3" />
 		<Unit filename="hello.cpp" />
 		<Unit filename="hello.h" />
 		<Unit filename="hinh-nen-naruto-1.jpg" />
 		<Unit filename="human64x91.png" />
 		<Unit filename="main.cpp" />
 		<Unit filename="math.h" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menu.h" />
 		<Unit filename="movea.cpp" />
 		<Unit filename="movea.h" />
 		<Unit filename="sdl_image.cbp" />

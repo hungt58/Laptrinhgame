@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1742692966 source:c:\laptrinhgamedaihoc\khungcode\main.cpp
+1743364200 source:c:\laptrinhgamedaihoc\khungcode\main.cpp
+	<bits/stdc++.h>
 	"hello.h"
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_mixer.h>
 	"movea.h"
+	"menu.h"
 
 1742636952 c:\laptrinhgamedaihoc\khungcode\hello.h
 	<bits/stdc++.h>
@@ -13,12 +16,29 @@
 1742457170 source:c:\laptrinhgamedaihoc\khungcode\hello.cpp
 	"hello.h"
 
-1742700280 source:c:\laptrinhgamedaihoc\khungcode\movea.cpp
+1743365448 source:c:\laptrinhgamedaihoc\khungcode\movea.cpp
 	"MOVEA.H"
 	"hello.h"
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<bits/stdc++.h>
 
-1742695990 c:\laptrinhgamedaihoc\khungcode\movea.h
+1743364200 c:\laptrinhgamedaihoc\khungcode\movea.h
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
+
+1743365750 source:c:\laptrinhgamedaihoc\khungcode\menu.cpp
+	"menu.h"
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<iostream>
+	"hello.h"
+	"movea.h"
+
+1743152852 c:\laptrinhgamedaihoc\khungcode\menu.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
 
