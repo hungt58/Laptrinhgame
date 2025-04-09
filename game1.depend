@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1743364200 source:c:\laptrinhgamedaihoc\khungcode\main.cpp
+1744206313 source:c:\laptrinhgamedaihoc\khungcode\main.cpp
 	<bits/stdc++.h>
 	"hello.h"
 	<SDL.h>
@@ -16,7 +16,7 @@
 1742457170 source:c:\laptrinhgamedaihoc\khungcode\hello.cpp
 	"hello.h"
 
-1743365448 source:c:\laptrinhgamedaihoc\khungcode\movea.cpp
+1744209221 source:c:\laptrinhgamedaihoc\khungcode\movea.cpp
 	"MOVEA.H"
 	"hello.h"
 	<SDL_mixer.h>

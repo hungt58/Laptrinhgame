@@ -14,7 +14,8 @@ int Rand(int L,int R) {
     return L + rd() % (R - L + 1);
 }
 vector<double> timming;
-int timee=0,o=16,speedmonster=6,diffi,currentMap=0,battu=0,so=0;
+int timee=0,o=16,speedmonster=6,diffi,currentMap=0,battu=0,so=1;
+
 vector<to> toadori,toadole,toadohi,toadoidle;
 struct Character {
     int x, y, w, h,speedx,speedy,health;
@@ -39,9 +40,11 @@ SDL_Renderer* renderer;
 SDL_Texture*  win;
 SDL_Texture*  lose;
 int oa=0;
-  SDL_Texture* princessTexture ;
-
+SDL_Texture* princessTexture ;
 Mix_Music* bgMusic = NULL;
+TTF_Font* font = nullptr;
+SDL_Texture* helpText = nullptr;
+SDL_Rect helpTextRect;
 void initAudio() {
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
@@ -142,11 +145,26 @@ void layanh(SDL_Renderer* renderer,int difficulty)
     hehe=monster1;
     for (int i=1;i<=so;i++)
     {
-    hehe.x=Rand(0,100);hehe.y=Rand(0,500);hehe.w=64;hehe.h=64,hehe.speedy=Rand(currentMap,10);hehe.speedx=Rand(currentMap,10);
+    hehe.x=Rand(0,100);hehe.y=Rand(0,500);hehe.w=64;hehe.h=64,hehe.speedy=Rand(currentMap,10+diffi*2);hehe.speedx=Rand(currentMap,10+diffi*2);
     monsters.push_back(hehe);
     }
     boss.health=100;boss.x=500;boss.y=0,boss.w=600,boss.h=500;
     so+=diffi;
+
+  /*  font = TTF_OpenFont("GEO_AI__.ttf", 25);
+    SDL_Color textColor = {255, 255, 255}; // Trắng
+    SDL_Surface* textSurface = TTF_RenderUTF8_Blended(font, "Cách chơi: A/D để di chuyển, J để đánh", textColor);
+    helpText = SDL_CreateTextureFromSurface(renderer, textSurface);
+
+    helpTextRect.x = 10;
+    helpTextRect.y = 900;
+    helpTextRect.w = textSurface->w;
+    helpTextRect.h = textSurface->h;
+
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(helpText);
+    TTF_CloseFont(font);
+    TTF_Quit();*/
 }
 
 
@@ -178,9 +196,26 @@ bool checkCollision(SDL_Rect a, SDL_Rect b) {
     return true; // Nếu không rơi vào các trường hợp trên thì có giao nhau
 }
 int chet=0,danh=8,danhdau=0,timerespon=20;
-SDL_Rect   partect;
+SDL_Rect   partect;  int quit2=0;
 void lastmap()
 {
+
+    if (quit2==0)
+    {
+          SDL_RenderClear(renderer);
+      SDL_Texture* huongdachoi=loadTexture("hi2.jpg",renderer,0,0,0);
+      SDL_RenderCopy(renderer,huongdachoi,NULL,NULL);
+      SDL_RenderPresent(renderer);
+        SDL_Event ea;
+
+    while (quit2==0)
+        {
+        while (SDL_PollEvent(&ea) != 0) {
+            if ( ea.type == SDL_KEYDOWN&& ea.key.keysym.sym == SDLK_RIGHT) {quit2=1;break;}
+            }
+        }
+
+    }
     SDL_Rect bossRect = {boss.x, boss.y, boss.w, boss.h};
     SDL_Rect spriterect = {player.x, player.y, player.w, player.h};
     if (danh==8&&chet==0)
@@ -310,7 +345,7 @@ void updateGame(int speed) {
         SDL_Rect monsterRect = {monster.x, monster.y, monster.w, monster.h};
         SDL_RenderCopy(renderer, monster.frames[monster.frame], NULL, &monsterRect);
     }
-    if (currentMap==2)
+    if (currentMap==1)
     {
         lastmap();
     }
@@ -320,10 +355,25 @@ void updateGame(int speed) {
 
 void moveza (SDL_Texture * crta, int x, int y ,int speed,SDL_Renderer* renderer1,SDL_Texture * background1,int difficult)
 {
+     renderer=renderer1;
+      SDL_RenderClear(renderer);
+      SDL_Texture* huongdachoi=loadTexture("hi.jpg",renderer,0,0,0);
+      SDL_RenderCopy(renderer,huongdachoi,NULL,NULL);
+      SDL_RenderPresent(renderer);
+      SDL_Event e;
+      int quit=0;
+    while (quit==0)
+        {
+        while (SDL_PollEvent(&e) != 0) {
+            if (e.type == SDL_MOUSEBUTTONDOWN||e.type == SDL_KEYDOWN) quit=1;
+            }
+        }
+
+
     diffi=difficult;
     moveLeft=false,moveRight=false,moveUp=false,moveDown=false;
 
-    renderer=renderer1;
+
 //    spriteSheetup=loadTexture("Jump1.png",renderer,0,0,0);
     layanh(renderer,diffi);
     renderTexture(crta,100,335,NULL,NULL,renderer,1);
@@ -331,7 +381,7 @@ void moveza (SDL_Texture * crta, int x, int y ,int speed,SDL_Renderer* renderer1
     player.h=64;
      princessTexture = loadTexture("princess.png",renderer,0,0,0);
      initAudio();
-     playMusic();
+   playMusic();
     bool running = true;
     background = loadTexture("map1.png",renderer,0,0,0);
       while (running) {
