@@ -345,7 +345,7 @@ void updateGame(int speed) {
         SDL_Rect monsterRect = {monster.x, monster.y, monster.w, monster.h};
         SDL_RenderCopy(renderer, monster.frames[monster.frame], NULL, &monsterRect);
     }
-    if (currentMap==1)
+    if (currentMap==3)
     {
         lastmap();
     }

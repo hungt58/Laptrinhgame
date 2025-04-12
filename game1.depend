@@ -16,7 +16,7 @@
 1742457170 source:c:\laptrinhgamedaihoc\khungcode\hello.cpp
 	"hello.h"
 
-1744209221 source:c:\laptrinhgamedaihoc\khungcode\movea.cpp
+1744449129 source:c:\laptrinhgamedaihoc\khungcode\movea.cpp
 	"MOVEA.H"
 	"hello.h"
 	<SDL_mixer.h>
