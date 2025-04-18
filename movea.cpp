@@ -289,8 +289,21 @@ void updateGame(int speed) {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background, NULL, NULL);
 
-    // Di chuyển nhân vật
-    if (moveLeft)  player.x -= speed;
+
+    if (currentMap==3)
+    {
+        lastmap();
+    }  // Cập nhật & di chuyển quái vật
+    for (auto& monster : monsters) {
+        monster.x += monster.speedx;  // Quái vật di chuyển về phía trước
+        monster.y += monster.speedy;  // Quái vật di chuyển về phía trước
+        if (monster.x > 995) monster.x = 0;
+        if (monster.y > 500) monster.y = 0;
+        monster.frame = (monster.frame + 1) % monster.frames.size();
+        SDL_Rect monsterRect = {monster.x, monster.y, monster.w, monster.h};
+        SDL_RenderCopy(renderer, monster.frames[monster.frame], NULL, &monsterRect);
+    }
+        if (moveLeft)  player.x -= speed;
     if (moveRight) player.x += speed;
     if (moveUp)    player.y -= speed;
     if (moveDown)  player.y += speed;
@@ -335,20 +348,6 @@ void updateGame(int speed) {
         SDL_RenderCopy(renderer, spriteSheetidle, &srcRect, &dstRect);
     }
 
-    // Cập nhật & di chuyển quái vật
-    for (auto& monster : monsters) {
-        monster.x += monster.speedx;  // Quái vật di chuyển về phía trước
-        monster.y += monster.speedy;  // Quái vật di chuyển về phía trước
-        if (monster.x > 995) monster.x = 0;
-        if (monster.y > 500) monster.y = 0;
-        monster.frame = (monster.frame + 1) % monster.frames.size();
-        SDL_Rect monsterRect = {monster.x, monster.y, monster.w, monster.h};
-        SDL_RenderCopy(renderer, monster.frames[monster.frame], NULL, &monsterRect);
-    }
-    if (currentMap==3)
-    {
-        lastmap();
-    }
     SDL_RenderPresent(renderer);
 }
 
